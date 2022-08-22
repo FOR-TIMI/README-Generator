@@ -114,7 +114,7 @@ ${data.Description}
 ## Table of Content
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributions](#contributions)
+- [Contributions](#contribution)
 - [Tests](#tests)
 - [Licenses](#licenses)
 - [Questions](#questions)
