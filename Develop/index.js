@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
-const fs = require('fs')
-let readmeText
+const fs = require('fs');
+let readmeText;
 
-
+// Object of licenses and their corresponding links
 const licenseBadge = {
 
         'Apache license' : `[![License](https://img.shields.io/badge/License-Apache_2.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)`,  
@@ -25,49 +25,8 @@ const licenseBadge = {
 
  }
 
-
-
-
- 
-
-const setReadMeData = function(data){
-return `# ${data.Title}${licenseBadge[data.Licenses]}
-
-## Description
-${data.Description}
-
-## Table of Content
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributions](#contributions)
-- [Tests](#tests)
-- [Licenses](#licenses)
-- [Questions](#questions)
-
-    
-## Installation
-${data.Installation}
-
-## Usage
-${data.Usage}
-
-## Contributions
-${data.Contributions}
-
-## Tests
-${data.Tests}
-
-## Licenses
-### ${data.Licenses}
-${licenseBadge[data.Licenses]}
-
-## questions
- For questions contact me via email on [${data.Email}](${data.Email}) or [view other projects](https://github.com/${data.Username}/).`
-}
-
-
-inquirer
-  .prompt([
+// Array of questions for user input
+ const questions = [
     {
         type : 'input',
         name : 'Title',
@@ -76,31 +35,31 @@ inquirer
     {
         type : 'input',
         name : 'Description',
-        message: 'What\'s the Description'
+        message: 'Enter a Description'
 
     },
     {
         type : 'input',
         name : 'Installation',
-        message: 'What\'s the Installation Guide'
+        message: 'What are the Installation Instructions'
 
     },
     {
         type : 'input',
         name : 'Usage',
-        message: 'How can the website be used?'
+        message: 'Enter some usage information'
 
     },
     {
         type : 'input',
         name : 'Contributions',
-        message: 'Who else Contributed to the Project?'
+        message: 'What are some contribution guidelines'
 
     },
     {
         type : 'input',
         name : 'Tests',
-        message: 'What are the Tests?'
+        message: 'What are the Test Instructions'
 
     },
     {
@@ -131,15 +90,9 @@ inquirer
         name : 'Email',
         message: 'What\'s your Email address?'
 
-    },
+    }]
 
-  ])
-  .then((answers) => {
-    readmeText = setReadMeData(answers)
-    createReadMeFile(answers)
-  })
-
-
+//To create the readmeFile
 function createReadMeFile(){
     fs.writeFile('README.md', readmeText, err => {
         if(err) throw err;
@@ -147,26 +100,56 @@ function createReadMeFile(){
     })
   }
 
+//To set readme Text
+function setReadMeData(data){
+    return `# ${data.Title}  ${licenseBadge[data.Licenses]}
+    
+## Description
+${data.Description}
+    
+## Table of Content
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributions](#contributions)
+- [Tests](#tests)
+- [Licenses](#licenses)
+- [Questions](#questions)
+    
+        
+## Installation
+${data.Installation}
+    
+## Usage
+${data.Usage}
+    
+## Contribution
+${data.Contributions}
+    
+## Tests
+${data.Tests}
+    
+## Licenses
+### ${data.Licenses}
+${licenseBadge[data.Licenses]}
+    
+## questions
+For additional questions contact me via email on [${data.Email}](${data.Email}) or [view some other projects](https://github.com/${data.Username}/).`
+    }
 
-  
-
-
-  
-
-
-
-// TODO: Include packages needed for this application
-
-// TODO: Create an array of questions for user input
-const questions = [];
-
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
+// function to initialize app
 function init() {
+    inquirer
+    .prompt(questions)
+    .then((answers) => {
+      readmeText = setReadMeData(answers)
+      createReadMeFile();
+    })
+
 
 }
+
+
+
 
 // Function call to initialize app
 init();
