@@ -137,7 +137,7 @@ ${data.Tests}
 ${licenseBadge[data.Licenses]}
 
 ## questions
-For additional questions contact me via email on [${data.Email}](${data.Email}) or [view some other projects](https://github.com/${data.Username}/).`
+For additional questions contact me via email on [${data.Email}](mailto:${data.Email}) or [view some other projects](https://github.com/${data.Username}/).`
 }
 
     inquirer
