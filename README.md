@@ -1,7 +1,7 @@
 # README-Generator
 
 ## Purpose
-This project helps users generate fast, quality README files
+This command line application helps users generate fast, quality README files
 
 
 * when a user is prompted for information about their application's repository, a high-quality, professional README.md is generated with the title of my project and sections entitled Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions
@@ -16,6 +16,7 @@ This project helps users generate fast, quality README files
 
 ## Built With
 * NodeJS
+* Inquirer package
 
 
 
